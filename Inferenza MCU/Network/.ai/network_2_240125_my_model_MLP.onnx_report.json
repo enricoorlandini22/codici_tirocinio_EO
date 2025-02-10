@@ -1,0 +1,351 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "validate --target stm32l4 --name network -m C:/Users/enric/OneDrive/Desktop/reti_neurali/2_240125_my_model_MLP.onnx --compression none --verbosity 1 --workspace C:/Users/enric/AppData/Local/Temp/mxAI_workspace102987015024490014657652188055859040 --output C:/Users/enric/.stm32cubemx/network_output --valoutput C:/Users/enric/OneDrive/Desktop/Validation/validation_output.csv --valinput C:/Users/enric/OneDrive/Desktop/Validation/validation_input.csv --classifier",
+    "cli_version": {
+        "extra": "20049",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20049",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-01-28T14:25:36+0100",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "validate",
+    "exec_duration": 0.0,
+    "hash": "0x37b4023ec6153fe7b264a21875cd5658",
+    "inputs": [
+        "actual_input"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 256,
+                "psize": 1024,
+                "rom_size": 1280
+            },
+            "id": 1,
+            "inputs": [],
+            "name": "_mlp_0_weight",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 64,
+                "psize": 256,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [],
+            "name": "_mlp_0_bias",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 4096,
+                "psize": 16384,
+                "rom_size": 16640
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "_mlp_3_weight",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 64,
+                "psize": 256,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "_mlp_3_bias",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [
+                4
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 128,
+                "psize": 512,
+                "rom_size": 520
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "_mlp_6_weight",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 2,
+                "psize": 8,
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "_mlp_6_bias",
+            "original": "Gemm",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 16,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        4
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "actual_input",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 320,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "actual_input",
+                "_mlp_0_weight",
+                "_mlp_0_bias"
+            ],
+            "name": "__mlp__mlp_0_Gemm_output_0",
+            "original": "Gemm",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                1
+            ],
+            "extras": {
+                "n_macc": 64,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "__mlp__mlp_0_Gemm_output_0"
+            ],
+            "name": "__mlp__mlp_1_Relu_output_0",
+            "original": "Relu",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 4160,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "__mlp__mlp_1_Relu_output_0",
+                "_mlp_3_weight",
+                "_mlp_3_bias"
+            ],
+            "name": "__mlp__mlp_3_Gemm_output_0",
+            "original": "Gemm",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                3
+            ],
+            "extras": {
+                "n_macc": 64,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "__mlp__mlp_3_Gemm_output_0"
+            ],
+            "name": "__mlp__mlp_4_Relu_output_0",
+            "original": "Relu",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 130,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 8,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        2
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "__mlp__mlp_4_Relu_output_0",
+                "_mlp_6_weight",
+                "_mlp_6_bias"
+            ],
+            "name": "output",
+            "original": "Gemm",
+            "type": "Gemm"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\enric\\OneDrive\\Desktop\\reti_neurali\\2_240125_my_model_MLP.onnx"
+    ],
+    "model_n_params": 4610,
+    "model_name": "node_2_240125_my_model_MLP",
+    "model_size": 18440,
+    "model_type": "onnx",
+    "name": "network",
+    "outputs": [
+        "output"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 512,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 16,
+            "c_type": "float",
+            "name": "actual_input"
+        }
+    ],
+    "rom_n_macc": 4738,
+    "rom_outputs": [
+        {
+            "c_size": 8,
+            "c_type": "float",
+            "name": "output"
+        }
+    ],
+    "rom_size": 18440,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20049",
+    "tools_version": "2.0.0-20049",
+    "val_error": 1.168658414485435e-07,
+    "val_error_desc": "x-cross (l2r) #1",
+    "val_metrics": [
+        {
+            "acc": "100.00%",
+            "cos": 1.0,
+            "desc": "HOST c-model #1",
+            "l2r": 1.168658414485435e-07,
+            "mae": 2.9709190130233765e-07,
+            "mean": -6.239861249923706e-08,
+            "nse": 0.9999999999999865,
+            "rmse": 4.1583317056392843e-07,
+            "std": 4.1274029172200244e-07,
+            "ts_name": "'output', 64 x f32(1x2), m_id=[5]"
+        },
+        {
+            "acc": "100.00%",
+            "cos": 1.0,
+            "desc": "original model #1",
+            "l2r": 0.0,
+            "mae": 0.0,
+            "mean": 0.0,
+            "nse": 1.0,
+            "rmse": 0.0,
+            "std": 0.0,
+            "ts_name": "'output', 64 x f32(1x2), m_id=[5]"
+        },
+        {
+            "acc": "100.00%",
+            "cos": 1.0,
+            "desc": "X-cross #1",
+            "l2r": 1.168658414485435e-07,
+            "mae": 2.9709190130233765e-07,
+            "mean": -6.239861249923706e-08,
+            "nse": 0.9999999999999865,
+            "rmse": 4.1583317056392843e-07,
+            "std": 4.1274029172200244e-07,
+            "ts_name": "'output', 64 x f32(1x2), m_id=[5]"
+        }
+    ]
+}

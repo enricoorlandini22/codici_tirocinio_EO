@@ -1,0 +1,261 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "analyze --target stm32l4 --name network -m C:/Users/enric/OneDrive/Desktop/reti_neurali/280125_my_model_CNN.onnx --compression none --verbosity 1 --workspace C:/Users/enric/AppData/Local/Temp/mxAI_workspace140179631689610011549941758034631946 --output C:/Users/enric/.stm32cubemx/network_output",
+    "cli_version": {
+        "extra": "20049",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20049",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-02-01T21:45:27+0100",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "analyze",
+    "exec_duration": 0.0,
+    "hash": "0x39fbe164e739fb325b51cc90e8e04a7c",
+    "inputs": [
+        "actual_input"
+    ],
+    "layers": [
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 16,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        4
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "actual_input",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "actual_input"
+            ],
+            "name": "_Unsqueeze_output_0",
+            "original": "Unsqueeze",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 416,
+                "n_params": 128,
+                "psize": 512,
+                "rom_output": {
+                    "c_size": 512,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        4
+                    ]
+                },
+                "rom_size": 512
+            },
+            "id": 3,
+            "inputs": [
+                "_Unsqueeze_output_0"
+            ],
+            "name": "__cnn__cnn_0_Conv_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [
+                1
+            ],
+            "extras": {
+                "n_macc": 128,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 512,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        32,
+                        4
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "__cnn__cnn_0_Conv_output_0"
+            ],
+            "name": "__cnn__cnn_1_Relu_output_0",
+            "original": "Relu",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 12352,
+                "n_params": 4160,
+                "psize": 16640,
+                "rom_output": {
+                    "c_size": 768,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64,
+                        3
+                    ]
+                },
+                "rom_size": 16640
+            },
+            "id": 5,
+            "inputs": [
+                "__cnn__cnn_1_Relu_output_0"
+            ],
+            "name": "__cnn__cnn_3_Conv_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [
+                3
+            ],
+            "extras": {
+                "n_macc": 192,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 768,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64,
+                        3
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [
+                "__cnn__cnn_3_Conv_output_0"
+            ],
+            "name": "__cnn__cnn_4_Relu_output_0",
+            "original": "Relu",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                4
+            ],
+            "extras": {
+                "n_macc": 257,
+                "n_params": 129,
+                "psize": 516,
+                "rom_output": {
+                    "c_size": 8,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        2
+                    ]
+                },
+                "rom_size": 516
+            },
+            "id": 7,
+            "inputs": [
+                "__cnn__cnn_4_Relu_output_0"
+            ],
+            "name": "__cnn__cnn_6_Conv_output_0",
+            "original": "Conv",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 9,
+            "inputs": [
+                "__cnn__cnn_6_Conv_output_0"
+            ],
+            "name": "output",
+            "original": "Squeeze",
+            "type": "Reshape"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\enric\\OneDrive\\Desktop\\reti_neurali\\280125_my_model_CNN.onnx"
+    ],
+    "model_n_params": 4417,
+    "model_name": "node_280125_my_model_CNN",
+    "model_size": 17668,
+    "model_type": "onnx",
+    "name": "network",
+    "outputs": [
+        "__cnn__cnn_6_Conv_0"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 1536,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 16,
+            "c_type": "float",
+            "name": "actual_input"
+        }
+    ],
+    "rom_n_macc": 13345,
+    "rom_outputs": [
+        {
+            "c_size": 8,
+            "c_type": "float",
+            "name": "__cnn__cnn_6_Conv_0"
+        }
+    ],
+    "rom_size": 17668,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20049",
+    "tools_version": "2.0.0-20049",
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}
