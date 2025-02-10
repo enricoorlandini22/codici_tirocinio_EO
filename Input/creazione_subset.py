@@ -11,8 +11,8 @@ print("Shape originale (in):", data_in.shape)
 print("Shape originale (out):", data_out.shape)
 
 # Seleziona le prime 32 e le ultime 32 righe
-subset_data_in = np.vstack([data_in[:256], data_in[-256:]])  # Combina le prime e ultime righe
-subset_data_out = np.concatenate([data_out[:256], data_out[-256:]])
+subset_data_in = np.vstack([data_in[:2048], data_in[-2048:]])  # Combina le prime e ultime righe
+subset_data_out = np.concatenate([data_out[:2048], data_out[-2048:]])
 
 # Salva il nuovo array in un file .npy
 output_in_file_path = "subset_input.npy"
